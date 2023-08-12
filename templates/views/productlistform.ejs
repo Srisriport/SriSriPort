@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List - SriSriPort</title>
+    <link rel="shortcut icon" href="images/flogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">SriSriPort</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasDarkNavbar"
+          aria-controls="offcanvasDarkNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="offcanvas offcanvas-end text-bg-dark"
+          tabindex="-1"
+          id="offcanvasDarkNavbar"
+          aria-labelledby="offcanvasDarkNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+              Contact Us
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/import"
+                  >Import</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/export"
+                  >Export</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/login"
+                  >Login</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/reglog"
+                  >Register</a
+                >
+              </li>
+
+              <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li> -->
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section>
+      <div class="main-container">
+        <div class="form-card">
+          <div class="f-card">
+            <div id="productform" class="left-side-bar">
+              <h2>Product Listing</h2>
+              <ul class="progress-bar">
+                <li class="active">Product Information</li>
+                <li class="active">Product Description</li>
+                <li class="active">Upload Photos</li>
+              </ul>
+            </div>
+            <div class="right-side-bar">
+              <form
+                action="/uploadmany"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <div class="main">
+                  <div class="text">
+                    <h2>Basic Details of the Product</h2>
+                    <p>Enter Basic Product Details</p>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>Confirm your mail</label>
+                      <input type="email" name="email" placeholder="Enter your
+                      registerd mail" / value="">
+                    </div>
+                    <div class="form-group">
+                      <label>Product Name</label>
+                      <input
+                        type="text"
+                        name="productName"
+                        placeholder="Enter Product Name"
+                      />
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>Supply Ability</label>
+                      <input
+                        type="text"
+                        name="supplyAbility"
+                        placeholder="Enter supply ability per month"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Minimum Order Quantity</label>
+                      <input
+                        type="number"
+                        name="moq"
+                        placeholder="Enter quantity"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>Min-Price</label>
+                      <div class="mprice">
+                        <input
+                          type="number"
+                          name="minPrice"
+                          placeholder="Enter minimum price"
+                          required
+                        />
+                        <%- include('../partials/currency'); -%>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Max-Price</label>
+
+                      <input
+                        type="number"
+                        name="maxPrice"
+                        placeholder="Enter maximum price"
+                      />
+                    </div>
+                  </div>
+                  <div class="fields mprice">
+                    <div class="form-group">
+                      <label>Special-Offer</label>
+                      <input
+                        type="text"
+                        name="specialOffer"
+                        placeholder="Enter Special Offer if any"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Payment terms</label>
+                      <div class="mprice">
+                        <input
+                          type="text"
+                          name="paymentTermsManually"
+                          placeholder="Enter Manually or"
+                        />
+                        <select class="selopt" name="paymentTerms">
+                          <option value="" disabled selected>Choose</option>
+                          <option value="CAD(Cash Against Documents) or DP">
+                            CAD(Cash Against Documents) or DP
+                          </option>
+                          <option value="Document Against Acceptance (DA)">
+                            Document Against Acceptance (DA)
+                          </option>
+                          <option value="Letter of Credit LC">
+                            Letter of Credit LC
+                          </option>
+                          <option value="Open account OA">
+                            Open account OA
+                          </option>
+                          <option value="Advance Payments">
+                            Advance Payments
+                          </option>
+                          <option value="Consignment">Consignment</option>
+                          <option value="Telegraphic transfer">
+                            Telegraphic transfer
+                          </option>
+                          <option value="EXIM Bank">EXIM Bank</option>
+                          <option value="Arbitration">Arbitration</option>
+                          <option value="Bank Draft and Transmittal Letter">
+                            Bank Draft and Transmittal Letter
+                          </option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>EXIM Terms and Conditions</label>
+                      <input
+                        type="text"
+                        name="eximTandC"
+                        placeholder="Enter exim terms"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Availability of sample</label>
+                      <select class="selopt" name="availabilityOfSample">
+                        <option value="" disabled selected>Choose</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>If yes, price per sample</label>
+                      <input
+                        type="text"
+                        name="pricePerSample"
+                        placeholder="Enter price per sample"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Processing time</label>
+                      <input
+                        type="text"
+                        name="processingTime"
+                        placeholder="Enter Production Time"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="text">
+                    <h2>Product Description</h2>
+                    <p>Describe Product</p>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>Overview</label>
+                      <input
+                        name="overview"
+                        type="text"
+                        placeholder="Write details"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Model Number</label>
+                      <input
+                        type="text"
+                        name="modelNumber"
+                        placeholder="Enter model number"
+                      />
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>Design</label>
+                      <input
+                        type="text"
+                        name="design"
+                        placeholder="Enter design number"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Size/Dimensions</label>
+                      <div class="mprice">
+                        <input
+                          type="text"
+                          name="sizeAndDimensions"
+                          placeholder="Enter size or dimensions"
+                        />
+                        <select class="opts" name="sizeUnit">
+                          <option value="">Choose</option>
+                          <option value="lbh in meter">lbh in meter</option>
+                          <option value="lbh in cm">lbh in cm</option>
+                          <option value="lbh in inches">lbh in inches</option>
+                          <option value="Weight(kg)">Weight(kg)</option>
+                          <option value="Weight(grams)">Weight(grams)</option>
+                          <option value="Weight(lbs)">Weight(lbs)</option>
+                          <option value="Small">Small</option>
+                          <option value="Medium">Medium</option>
+                          <option value="Large">Large</option>
+                          <option value="Extra-Large">Extra-Large</option>
+                          <option value="Others">Others(specify)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>Material</label>
+                      <input
+                        type="text"
+                        name="material"
+                        placeholder="Specify the nuilt material of the product"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Color</label>
+                      <input
+                        type="text"
+                        name="color"
+                        placeholder="Enter the color of your product"
+                      />
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>Features</label>
+                      <input
+                        type="text"
+                        name="features"
+                        placeholder="Enter the features of your product"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Type</label>
+                      <select name="type" class="selopt">
+                        <option value="" selected disabled>Choose</option>
+                        <option value="Auto Parts and Accessories">
+                          Auto Parts and Accessories
+                        </option>
+                        <option value="Electronic Components">
+                          Electronic Components
+                        </option>
+                        <option value="Consumer Electronics">
+                          Consumer Electronics
+                        </option>
+                        <option value="Fashion Accessories and Footwear">
+                          Fashion Accessories and Footwear
+                        </option>
+                        <option value="Fashion Apparel and Fabrics">
+                          Fashion Apparel and Fabrics
+                        </option>
+                        <option value="Gifts and Premiums">
+                          Gifts and Premiums
+                        </option>
+                        <option value="Food, Household and Pets">
+                          Food, Household and Pets
+                        </option>
+                        <option value="Home Appliances">Home Appliances</option>
+                        <option value="Health and Personal Care">
+                          Health and Personal Care
+                        </option>
+                        <option value="Furniture and Home Decoratives">
+                          Furniture and Home Decoratives
+                        </option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Machinery and Equipment">
+                          Machinery and Equipment
+                        </option>
+                        <option value="Mobile Electronics">
+                          Mobile Electronics
+                        </option>
+                        <option value="Sports and Outdoors">
+                          Sports and Outdoors
+                        </option>
+                        <option value="Smart Living Electronics">
+                          Smart Living Electronics
+                        </option>
+                        <option value="Scrap">Scrap</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>General Use</label>
+                      <input
+                        type="text"
+                        name="generalUse"
+                        placeholder="Enter general use of the Product"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>After sale service</label>
+                      <input
+                        type="text"
+                        name="afterSaleService"
+                        placeholder="Enter services you provide after sale"
+                      />
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="form-group">
+                      <label>Applications</label>
+                      <input
+                        type="text"
+                        name="applications"
+                        placeholder="Enter applications of the products"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Packaging</label>
+                      <input
+                        type="text"
+                        name="packaging"
+                        placeholder="Packaging details"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="text">
+                    <h2>Upload Images</h2>
+                    <p>Select minimum 3 Images</p>
+                  </div>
+
+                  <div class="wrapper">
+                    <div class="box">
+                      <div class="js--image-preview"></div>
+                      <div class="upload-options">
+                        <label>
+                          <input
+                            type="file"
+                            class="image-upload"
+                            name="myfiles"
+                            multiple
+                          />
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="but-sub">
+                    <button id="productbtn" class="submit-button">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+  <script src="js/fileinput.js"></script>
+</html>
