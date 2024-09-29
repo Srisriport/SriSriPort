@@ -7,7 +7,7 @@ const app = express();
 const hbs = require("hbs");
 const ejs = require("ejs");
 const cookieParser=require("cookie-parser");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 80;
 
 
 // Path set static and temp eng
